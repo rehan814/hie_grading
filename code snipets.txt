@@ -1,0 +1,12 @@
+# Reading files from a directory and then selecting one using a mask
+
+dir_list_features=[]
+for file_inc in os.listdir(datadir):
+    if file_inc.endswith(".mat"):
+        dir_list_features.append(file_inc)
+			
+	
+mask = np.zeros(dir_list_features.__len__())
+mask[patient] = 1
+index=np.where(mask != 1)
+files_select = itemgetter(*index[0])(dir_list_features)
